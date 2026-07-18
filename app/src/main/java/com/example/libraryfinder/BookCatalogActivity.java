@@ -35,6 +35,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import com.example.libraryfinder.BuildConfig;
+
 public class BookCatalogActivity extends AppCompatActivity {
     private List<Book> allBooks = new ArrayList<>();
     private List<Book> displayedBooks = new ArrayList<>();
@@ -48,7 +50,7 @@ public class BookCatalogActivity extends AppCompatActivity {
     private BookDao dao;
     private ApiService apiService;
     private CrudApiService crudApiService;
-    private String API_KEY = "AIzaSyAN0Wdipgd-zbd_svREZUF0jAXJR18qxYw";
+    private String API_KEY = BuildConfig.GOOGLE_BOOKS_API_KEY;
     private boolean isAdmin;
 
     @Override

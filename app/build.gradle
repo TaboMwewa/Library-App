@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'  // Standard for Java Android projects
+    id 'com.android.application'
 }
 
 android {
@@ -14,6 +14,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Load local.properties
+        def localProperties = new Properties()
+        def localPropertiesFile = rootProject.file('local.properties')
+        if (localPropertiesFile.exists()) {
+            localProperties.load(new FileInputStream(localPropertiesFile))
+        }
+        buildConfigField "String", "GOOGLE_BOOKS_API_KEY", "\"${localProperties.getProperty('GOOGLE_BOOKS_API_KEY', '')}\""
     }
 
     buildTypes {
@@ -26,9 +34,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-// Removed buildFeatures { compose true } and composeOptions
-}
 
+    buildFeatures {
+        buildConfig true
+    }
+}
 dependencies {
 // Core dependencies (kept the ones you have, removed Compose-specific ones)
     implementation libs.material
