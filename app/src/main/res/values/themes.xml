@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme - LIGHT MODE ONLY -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Force Light Mode: Override dark defaults -->
+        <!-- White bg, fixes black -->
+        <item name="android:colorBackground">@color/surface_color</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/on_primary</item>
+        <item name="colorSurface">@color/surface_color</item>  <!-- White surface -->
+        <item name="colorOnSurface">@color/on_surface</item>  <!-- Dark text -->
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>  <!-- Gray text -->
+        <item name="colorOutlineVariant">@color/outline_variant</item>
+
+        <!-- Status/Nav Bar Light (No Black Overlay) -->
+        <item name="android:statusBarColor">@color/primary_color</item>
+        <item name="android:navigationBarColor">@color/surface_color</item>
+        <item name="android:windowLightStatusBar">true
+        </item>  <!-- Dark icons on light status bar -->
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Other Tweaks for Visibility -->
+        <item name="android:textColor">@color/on_surface</item>  <!-- Default dark text -->
+        <item name="android:textColorHint">@color/on_surface_variant</item>  <!-- Dark hints -->
+        <item name="colorControlNormal">@color/on_surface_variant</item>  <!-- Form elements -->
+    </style>
+
+    <!-- If Using ActionBar/Toolbar Theme -->
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'  // Standard for Java Android projects
+}
+
+android {
+    namespace = "com.example.libraryfinder"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.libraryfinder"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+// Removed buildFeatures { compose true } and composeOptions
+}
+
+dependencies {
+// Core dependencies (kept the ones you have, removed Compose-specific ones)
+    implementation libs.material
+    implementation libs.constraintlayout
+    implementation libs.appcompat
+    implementation libs.activity
+    implementation libs.lifecycle.runtime.ktx  // If you're using this, switch to Java equivalent like lifecycle-livedata if needed
+
+// Other dependencies
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+
+// Room Dependencies
+    implementation "androidx.room:room-runtime:2.6.1"
+    annotationProcessor "androidx.room:room-compiler:2.6.1"  // For Java annotation processing
+
+// Test Dependencies
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+
+// Room Test Dependencies
+    testImplementation "androidx.room:room-testing:2.6.1"
+
+// Debug/Test Dependencies (ensure these are present)
+    testImplementation 'junit:junit:4.13.2'  // If not in your libs catalog
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+}
+

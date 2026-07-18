@@ -1,0 +1,6 @@
+<resources>
+    <string name="book_title">Sample Title</string>
+    <string name="book_cover_description">Book cover image</string>
+    <string name="app_name">Library Finder</string>
+    <string name="title_activity_favorites_activity.java">FavoritesActivity.java</string>
+</resources>

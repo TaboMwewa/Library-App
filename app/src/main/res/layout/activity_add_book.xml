@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/surface_color" >
+
+        <!-- Book Title Input -->
+        <EditText
+            android:id="@+id/inputBookTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Book Title"
+            android:inputType="textCapWords"
+            android:textSize="18sp" />
+
+        <!-- Book Author Input -->
+        <EditText
+            android:id="@+id/inputBookAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Author"
+            android:inputType="textCapWords"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Book Category Input -->
+        <EditText
+            android:id="@+id/inputBookCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Category"
+            android:inputType="text"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp" />
+
+        <!-- Book Description Input -->
+        <EditText
+            android:id="@+id/inputBookDescription"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="Description"
+            android:inputType="textMultiLine"
+            android:textSize="16sp"
+            android:gravity="top"
+            android:layout_marginTop="12dp" />
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/buttonSubmitBook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Book"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test: Return to Catalogue"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

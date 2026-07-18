@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".BookCatalogActivity">
+
+    <!-- AppBar for Header -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#3B8524"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Book Catalog"
+            app:subtitle="Explore your library"
+            app:titleTextColor="@color/on_primary"
+            app:subtitleTextColor="@color/on_primary"
+            app:elevation="4dp" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Content - FIXED: Added scrolling behavior to avoid AppBar overlap -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- SearchView with styled hint and elevation -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:elevation="6dp"
+            android:queryHint="Search by title or author..."
+            app:iconifiedByDefault="false"
+            app:queryBackground="@color/surface_variant"
+            app:strokeColor="@color/primary_color"
+            app:iconTint="@color/primary_color"
+            tools:ignore="NewApi" />
+
+        <!-- Category Chips in a CardView for grouping -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp"
+            app:strokeColor="@color/primary_color"
+            app:strokeWidth="1dp">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/categoryChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                app:singleSelection="true"
+                app:chipSpacingHorizontal="12dp"
+                app:chipSpacingVertical="8dp">
+
+                <!-- Chips with icons -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_fiction"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fiction"
+                    app:chipIcon="@android:drawable/ic_menu_agenda"
+                    app:chipIconSize="18dp"
+                    app:chipBackgroundColor="#BD6272"
+                    app:checkedIconTint="@color/on_primary"
+                    app:chipIconTint="@color/on_primary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_nonfiction"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Non-fiction"
+                    app:chipIcon="@android:drawable/ic_menu_info_details"
+                    app:chipIconSize="18dp"
+                    app:chipBackgroundColor="#8B5E3C"
+                    app:checkedIconTint="@color/on_primary"
+                    app:chipIconTint="@color/on_primary" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_scifi"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sci-Fi"
+                    app:chipIcon="@android:drawable/ic_menu_gallery"
+                    app:chipIconSize="18dp"
+                    app:chipBackgroundColor="#7A7256"
+                    app:checkedIconTint="@color/on_primary"
+                    app:chipIconTint="@color/on_primary" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- RecyclerView in CardView for elevation -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@color/outline_variant"
+            app:strokeWidth="1dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bookRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="12dp"
+                android:overScrollMode="never"
+                android:scrollbars="vertical" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+    <!-- Horizontal Row of FABs at Bottom -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_anchorGravity="bottom">
+
+        <!-- Favorites FAB (Always visible, left) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="View your favorites"
+            android:elevation="6dp"
+            android:src="@drawable/ic_favorites"
+            app:backgroundTint="#6E2C2C"
+            app:tint="@color/on_primary" />
+
+        <!-- Add Book FAB (Admin only, center-left) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Add a new book"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_input_add"
+            android:visibility="gone"
+            app:backgroundTint="#6E2C2C"
+            app:tint="@color/on_primary" />
+
+        <!-- Sync FAB (Admin only, center-right) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Sync books from server"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_popup_sync"
+            android:visibility="gone"
+            app:backgroundTint="#6E2C2C"
+            app:tint="@color/on_primary" />
+
+        <!-- Save to Server FAB (Admin only, right) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_save_to_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Save all books to server"
+            android:elevation="6dp"
+            android:src="@android:drawable/ic_menu_upload"
+            android:visibility="gone"
+            app:backgroundTint="#6E2C2C"
+            app:tint="@color/on_primary" />
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
